@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<button class="btn btn-dark float-right" onclick="location.href='basket'">Basket ({{basket_size}})</button>
+<h4>Filters:</h4>
+<form class="form-inline" action="{{ url_for('index') }}" method="POST">
+    <select class="selectpicker" name="categories">
+      <option selected value="0">All Categories</option>
+            {% for row in categories %}
+            <option value="{{row}}">{{row}}</option>
+            {% endfor %}
+    </select>
+    <select class="selectpicker" name="brands">
+      <option value="0">All brands</option>
+            {% for row in brands %}
+            <option value="{{row}}">{{row}}</option>
+            {% endfor %}
+    </select>
+    <select class="selectpicker" name="years">
+      <option selected value="0">All years</option>
+            {% for row in years %}
+            <option value="{{row}}">{{row}}</option>
+            {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-light" name="search">Search</button>
+</form>
+<br>
+<h4>Products List:</h4>
+
+{% if product_added %}
+<ul class="list-group">
+        {% for row in product_added %}
+        <li onclick="location.href='product?product_id={{ row['product_id'] }}'" class="list-group-item list-group-item-action"> id: {{ row['product_id'] }}, list_price: {{ row['list_price'] }}PLN, name: {{ row['product_name'] }}, brand: {{ row['brand'] }}, category: {{row['category']}}, year:{{row['model_year']}}</li>
+        {% endfor %}
+</ul>
+{% else %}
+No products found
+{%endif %}
+{% endblock %}

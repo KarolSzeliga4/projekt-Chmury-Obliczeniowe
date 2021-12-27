@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<button class="btn btn-dark float-right" onclick="location.href='basket'">Basket ({{basket_size}})</button>
+  <h3>Basket:</h3>
+    {% if basket %}
+        {% for row in basket %}
+            <button onclick="location.href='product?product_id={{ row['product_id'] }}'" class="btn btn-light">list_price: {{ row['list_price'] }}PLN, name: {{ row['product_name'] }}, brand: {{ row['brand'] }}</button>
+            <button class="btn btn-dark" onclick="location.href='basket?delete={{ row['product_id'] }}'">Delete</button>
+        {% endfor %}
+        <h5>Sum: {{sum_price}}PLN</h5>
+        <button class="btn btn-primary" onclick="location.href='basket?buy=true'">Buy</button>
+        <br>
+        <br>
+        <h5>Recommended for you:</h5>
+        {% for row in products_related %}
+            <div onclick="location.href='product?product_id={{ row['product_id'] }}'" class="list-group-item list-group-item-action"> id: {{ row['product_id'] }}, list_price: {{ row['list_price'] }}PLN, name: {{ row['product_name'] }}, brand: {{ row['brand'] }}, category: {{row['category']}}, year:{{row['model_year']}}</div>
+        {% endfor %}
+    {% else %}
+        {% if display_done_shopping %}
+            Shopping done successfully!
+        {% else %}
+        No products in basket yet
+        {%endif %}
+    {%endif %}
+{% endblock %}
