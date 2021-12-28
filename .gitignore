@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-chmury_obliczenione_project/testingfile.py
+app/testingfile.py
 
 # C extensions
 *.so
