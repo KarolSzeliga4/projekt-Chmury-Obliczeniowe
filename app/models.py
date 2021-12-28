@@ -91,7 +91,6 @@ def execute_write_product_query(tx, query, product):
 def execute_write_connection(query, id1, id2):
     with graph.driver.session() as session:
         result = session.write_transaction(execute_write_connection_query, query, id1, id2)
-        print("result->>  ", result)
         return result
 
 
@@ -215,7 +214,6 @@ def connect(prods_list):
     if len(prods_list) > 1:
         for i in range(len(prods_list)-1):
             for j in range(i+1, len(prods_list)):
-                print("i", i, prods_list[i]['product_id'],'j', j, prods_list[j]['product_id'])
                 add_product_connection(prods_list[i]['product_id'], prods_list[j]['product_id'])
 #
 #

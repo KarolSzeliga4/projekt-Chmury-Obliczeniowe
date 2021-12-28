@@ -101,7 +101,7 @@ def basket_display():
             if not_in_yet:
                 products_related.append(prod)
 
-    return render_template('basket.html', sum_price=sum_price, basket=basket, basket_size=len(basket),
+    return render_template('basket.html', sum_price=round(sum_price, 2), basket=basket, basket_size=len(basket),
                            products_related=products_related, display_done_shopping=display_done_shopping)
 
 

@@ -4,8 +4,10 @@
   <h3>Basket:</h3>
     {% if basket %}
         {% for row in basket %}
-            <button onclick="location.href='product?product_id={{ row['product_id'] }}'" class="btn btn-light">list_price: {{ row['list_price'] }}PLN, name: {{ row['product_name'] }}, brand: {{ row['brand'] }}</button>
-            <button class="btn btn-dark" onclick="location.href='basket?delete={{ row['product_id'] }}'">Delete</button>
+            <button onclick="location.href='product?product_id={{ row['product_id'] }}'" class="btn btn-light">
+                <strong>{{ row['list_price'] }}PLN</strong> . name: <strong>{{ row['product_name'] }}</strong>
+            </button>
+            <button class="btn btn-dark" onclick="location.href='basket?delete={{ row['product_id'] }}'">Delete</button><br>
         {% endfor %}
         <h5>Sum: {{sum_price}}PLN</h5>
         <button class="btn btn-primary" onclick="location.href='basket?buy=true'">Buy</button>
@@ -13,7 +15,13 @@
         <br>
         <h5>Recommended for you:</h5>
         {% for row in products_related %}
-            <div onclick="location.href='product?product_id={{ row['product_id'] }}'" class="list-group-item list-group-item-action"> id: {{ row['product_id'] }}, list_price: {{ row['list_price'] }}PLN, name: {{ row['product_name'] }}, brand: {{ row['brand'] }}, category: {{row['category']}}, year:{{row['model_year']}}</div>
+            <div onclick="location.href='product?product_id={{ row['product_id'] }}'" class="list-group-item list-group-item-action">
+            <strong>{{ row['list_price'] }}PLN</strong>
+             . brand: <strong>{{ row['brand'] }}</strong>
+             . category: <strong>{{row['category']}}</strong>
+             . year: <strong>{{row['model_year']}}</strong>
+             . name: <strong>{{ row['product_name'] }}</strong>
+        </div>
         {% endfor %}
     {% else %}
         {% if display_done_shopping %}
