@@ -10,7 +10,7 @@ class App:
         # Don't forget to close the driver connection when you are finished with it
         self.driver.close()
 
-graph = App("neo4j+s://23338107.databases.neo4j.io", "neo4j", "324fTDRNLQgb7NsY1M3iYH2Bl7i-zG2bKIerNjDz_IE")
+graph = App("neo4j+s://23338107.databases.neo4j.io", "neo4j", "you_should_not_see_password :)")
 
 
 class Product:
